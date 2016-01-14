@@ -85,10 +85,11 @@ public class WeatherPagerAdapter extends PagerAdapter {
                 .load("http://lorempixel.com/600/820/nature")
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .networkPolicy(NetworkPolicy.NO_CACHE)
+                .resize(600,820)
                 .into(background);
 
 
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss aa");
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
         Date today = new Date();
         date.setText(sdf.format(today).toString());
 
@@ -112,7 +113,7 @@ public class WeatherPagerAdapter extends PagerAdapter {
             @Override
             public void onResponse(Response<CurrentWeather> response) {
                 currentWeather = response.body();
-                list.add(currentWeather);
+                list.add(0, currentWeather);
                 city.setText(currentWeather.getName());
 
             }
@@ -176,12 +177,15 @@ public class WeatherPagerAdapter extends PagerAdapter {
 
         zipCode = (EditText) promptView.findViewById(R.id.zipCode);
 
-        // setup a dialog window
+
         alertDialogBuilder.setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        locations.add(String.valueOf(zipCode.getText()));
+                        String zip = String.valueOf(zipCode.getText());
+                        if(!locations.contains(zip)){
+                        locations.add(zip);
                         notifyDataSetChanged();
+                        }
                     }
                 })
                 .setNegativeButton("Cancel",
@@ -191,7 +195,7 @@ public class WeatherPagerAdapter extends PagerAdapter {
                             }
                         });
 
-        // create an alert dialog
+
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
     }

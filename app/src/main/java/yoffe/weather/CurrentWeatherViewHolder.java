@@ -26,6 +26,7 @@ public class CurrentWeatherViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.condition) TextView condition;
     @Bind(R.id.icon) ImageView icon;
     @Bind(R.id.forecast)TextView forecast;
+    @Bind(R.id.upArrow)TextView upArrow;
 
     public CurrentWeatherViewHolder(View itemView, Context context) {
         super(itemView);
@@ -40,14 +41,11 @@ public class CurrentWeatherViewHolder extends RecyclerView.ViewHolder {
         currentWeather.setText(String.valueOf((int)theWeather.getMain().getTemp()+ "°"));
         condition.setText(theWeather.getWeather()[0].getDescription());
 
-       /* low.setText(String.valueOf((int)theWeather.getTemp().getMin()+ "°"));
-        high.setText(String.valueOf((int)theWeather.getTemp().getMax()+ "°"));
-        currentWeather.setText(String.valueOf((int)theWeather.getTemp().getMax() + "°"));
-        condition.setText(theWeather.getWeather()[0].getDescription());*/
 
         Picasso.with(context).load("http://openweathermap.org/img/w/" +
                 theWeather.getWeather()[0].getIcon() + ".png").into(icon);
 
-        forecast.setText("Forecast");
+        forecast.setText(" Forecast");
+        upArrow.setText("⇤");
     }
 }

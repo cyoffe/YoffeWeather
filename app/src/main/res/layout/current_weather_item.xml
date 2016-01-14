@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="450dp">
+    android:paddingTop="500dp">
 
     <ImageView
         android:layout_width="75dip"
@@ -14,7 +14,34 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:background="@android:color/transparent"
-        tools:text="icon" />
+        tools:text="icon"
+        android:layout_above="@+id/high"
+        />
+
+    <TextView
+        android:id="@+id/upArrow"
+        android:text="⇤"
+        android:rotation="90"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/icon"
+        android:theme="@style/AllTextStyle"/>
+
+
+    <TextView
+        android:id="@+id/downArrow"
+        android:text="⇤"
+        android:rotation="-90"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icon"
+        android:layout_toRightOf="@+id/high"
+        android:theme="@style/AllTextStyle"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,6 +53,7 @@
         android:textColor="#FFFFFF"
         android:background="@android:color/transparent"
         tools:text="description"
+        android:theme="@style/AllTextStyle"
         />
 
     <TextView
@@ -34,22 +62,20 @@
         android:id = "@+id/high"
         android:textSize="28sp"
         android:layout_below="@+id/condition"
-        android:textColor="#FFFFFF"
-        android:background="@android:color/transparent"
         tools:text="maxTemp"
-        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/upArrow"
         android:paddingRight="18dp"
-        android:layout_above="@+id/weather" />
+        android:layout_above="@+id/weather"
+        android:theme="@style/AllTextStyle"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id = "@+id/low"
         android:textSize="28sp"
-        android:layout_toRightOf="@+id/high"
+        android:layout_toRightOf="@+id/downArrow"
         android:layout_below="@+id/condition"
-        android:textColor="#FFFFFF"
-        android:background="@android:color/transparent"
+        android:theme="@style/AllTextStyle"
         tools:text="minTemp"
         />
 
@@ -59,21 +85,20 @@
         android:id = "@+id/weather"
         android:textSize="150dp"
         android:layout_below="@+id/low"
-        android:textColor="#FFFFFF"
-        android:background="@android:color/transparent"
+        android:theme="@style/AllTextStyle"
         tools:text="temp"
         android:layout_marginLeft="10dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id = "@+id/forecast"
         android:textSize="32sp"
         android:layout_below="@+id/weather"
-        android:textColor="#FFFFFF"
-        android:layout_marginLeft="10dp"
-        android:background="@android:color/transparent"
-        tools:text="forecast"/>
+        android:theme="@style/AllTextStyle"
+        tools:text="forecast"
+        android:backgroundTintMode="multiply"
+        android:background="#33000000"/>
 
 
 

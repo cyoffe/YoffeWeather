@@ -7,23 +7,22 @@
 
     <ImageView
         android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:windowSoftInputMode="adjustResize"/>
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+
+        />
 
     <android.widget.TextClock
-        android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/date"
         android:layout_below="@+id/city"
         android:layout_centerHorizontal="true"
-        android:format12Hour="hh:mm:ss aa"
+        android:format12Hour="hh:mm aa"
         android:textSize="15dp"
-        android:shadowColor="#000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="1.5"/>
+        android:theme="@style/AllTextStyle"/>
 
 
     <TextView
@@ -31,13 +30,10 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:shadowColor="#000"
-        android:shadowDx="1"
-        android:shadowDy="1"
-        android:shadowRadius="1.5"
+        android:textSize="25dp"
+        android:theme="@style/AllTextStyle"
         android:text="Current Location"
-        android:textColor="#FFFFFF" />
+        />
 
     <FrameLayout
         android:layout_width="40dp"
@@ -62,12 +58,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="+"
-            android:textColor="#FFFFFF"
-            android:textSize="40sp"
-            android:shadowColor="#000"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="1.5"/>
+            android:theme="@style/AllTextStyle"
+            android:textSize="40sp" />
     </FrameLayout>
 
 
@@ -77,10 +69,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/date"
-        android:layout_marginTop="50dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        />
 
 
 
