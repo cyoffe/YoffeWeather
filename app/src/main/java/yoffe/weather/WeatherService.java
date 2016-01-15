@@ -14,4 +14,7 @@ public interface WeatherService {
 
     @GET("/data/2.5/forecast/daily?")
     Call<WeatherList> listWeather(@QueryMap Map<String, String> params);
+
+    @GET("/data/2.5/weather?")
+    Call<CurrentWeather> listCurrentWeather(@QueryMap Map<String, String> params);
 }

@@ -46,12 +46,16 @@ public class WeatherPagerAdapter extends PagerAdapter {
     private CurrentWeather currentWeather;
     private WeatherService service;
     private WeatherAdapter weatherAdapter;
-    @Bind(R.id.city) TextView city;
-    @Bind(R.id.date) TextClock date;
+    @Bind(R.id.city)
+    TextView city;
+    @Bind(R.id.date)
+    TextClock date;
     private EditText zipCode;
-    @Bind(R.id.addLocationButton)Button locationButton;
-    @Bind(R.id.background) ImageView background;
-    CurrentWeatherService currentWeatherService;
+    @Bind(R.id.addLocationButton)
+    Button locationButton;
+    @Bind(R.id.background)
+    ImageView background;
+
 
 
     public WeatherPagerAdapter(ArrayList<String> locations, Context mainActivityContext) {
@@ -64,7 +68,6 @@ public class WeatherPagerAdapter extends PagerAdapter {
                 .build();
 
         service = retrofit.create(WeatherService.class);
-        currentWeatherService =  retrofit.create(CurrentWeatherService.class);
 
     }
 
@@ -85,7 +88,7 @@ public class WeatherPagerAdapter extends PagerAdapter {
                 .load("http://lorempixel.com/600/820/nature")
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
                 .networkPolicy(NetworkPolicy.NO_CACHE)
-                .resize(600,820)
+                .resize(600, 820)
                 .into(background);
 
 
@@ -108,7 +111,7 @@ public class WeatherPagerAdapter extends PagerAdapter {
 
         final ArrayList<Object> list = new ArrayList<>();
 
-        Call<CurrentWeather> currentWeatherCall = currentWeatherService.listCurrentWeather(params);
+        Call<CurrentWeather> currentWeatherCall = service.listCurrentWeather(params);
         currentWeatherCall.enqueue(new Callback<CurrentWeather>() {
             @Override
             public void onResponse(Response<CurrentWeather> response) {
@@ -124,7 +127,7 @@ public class WeatherPagerAdapter extends PagerAdapter {
             }
         });
 
-       params.put("cnt", "16");
+        params.put("cnt", "16");
         Call<WeatherList> call = service.listWeather(params);
         call.enqueue(new Callback<WeatherList>() {
             @Override
@@ -132,7 +135,7 @@ public class WeatherPagerAdapter extends PagerAdapter {
                 weather = response.body();
 
 
-                for(Weather16 w : weather.getList()) {
+                for (Weather16 w : weather.getList()) {
                     list.add(w);
                 }
 
@@ -151,7 +154,6 @@ public class WeatherPagerAdapter extends PagerAdapter {
         container.addView(view);
         return view;
     }
-
 
 
     @Override
@@ -182,9 +184,11 @@ public class WeatherPagerAdapter extends PagerAdapter {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         String zip = String.valueOf(zipCode.getText());
-                        if(!locations.contains(zip)){
-                        locations.add(zip);
-                        notifyDataSetChanged();
+                        if (zip.length() == 5) {
+                            if (!locations.contains(zip)) {
+                                locations.add(zip);
+                                notifyDataSetChanged();
+                            }
                         }
                     }
                 })

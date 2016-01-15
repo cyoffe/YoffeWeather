@@ -53,9 +53,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> locations;
     private WeatherPagerAdapter adapter;
     private SharedPreferences preferences;
-    private LocationManager locationManager;
     private ViewPager viewPager;
-    private LocationListener listener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,18 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         locations = new ArrayList<String>();
 
-        /*locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
 
-        listener = new MyLocationListener(getBaseContext(), locations, viewPager);
-
-        locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 0, 0, listener);*/
-
-        // locations.add("11230");
-        // locations.add("08701");
         adapter = new WeatherPagerAdapter(locations, this);
         adapter.notifyDataSetChanged();
         viewPager.setAdapter(adapter);
@@ -105,11 +93,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-      /*  if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-          return;
-        }
-        locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 0, 0, listener);*/
+
 
 
 
